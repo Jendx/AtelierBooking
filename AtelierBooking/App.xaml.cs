@@ -1,4 +1,6 @@
-﻿namespace AtelierBooking;
+﻿using AtelierBooking.Pages;
+
+namespace AtelierBooking;
 
 public partial class App : Application
 {
@@ -6,6 +8,7 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new NavigationPage(new Pages.BookingListPage());
-	}
+		MainPage = new NavigationPage(new BookingListPage());
+		MainPage.Navigation.PushAsync(new BookingListPage());
+    }
 }

@@ -1,27 +1,27 @@
 ﻿namespace AtelierBooking.Pages;
 
+using AtelierBooking.Helpers;
 using AtelierBooking.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using CommunityToolkit.Maui.Markup;
+using Microsoft.Maui.Controls;
 using System.Threading.Tasks;
+using static AtelierBooking.DataTemplates.DataTemplates;
 
 internal sealed class BookingListPage : ContentPage
 {
     public BookingListPage()
     {
-        _ = InitViewModel();
+       _ = InitAsync();
     }
 
-    private async Task InitViewModel()
+    private async Task InitAsync()
     {
         var vm = MauiProgram.ServiceProvider.GetRequiredService<BookingListViewModel>();
-
         if (vm is not null)
         {
+            await vm.InitAsync(Navigation);
             BindingContext = vm;
-            InitPage();
+            Content = InitPage();
         }
     }
 
@@ -29,8 +29,12 @@ internal sealed class BookingListPage : ContentPage
     {
         return new CollectionView()
         {
-            ItemTemplate = DataTemplates.DataTemplates.BookingListDataTemplate()
-        };
+            MinimumHeightRequest = 150,
+            ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical) { ItemSpacing = 16 },
+            ItemTemplate = BookingListDataTemplate(),
+            EmptyView = new Label().Text("Nič tu něje")
+        }
+        .Bind(CollectionView.ItemsSourceProperty, nameof(BookingListViewModel.BookTimes));
     }
 
 }

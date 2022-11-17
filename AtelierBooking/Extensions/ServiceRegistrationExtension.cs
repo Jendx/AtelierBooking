@@ -13,7 +13,9 @@ namespace AtelierBooking.Extensions
         {
             var services = builder.Services;
 
-            builder.Services.RegisterViewModels();
+            builder.Services
+                .AddSingleton<INavigation>((services) => App.Current.MainPage.Navigation)
+                .RegisterViewModels();
 
             return services;
         }
