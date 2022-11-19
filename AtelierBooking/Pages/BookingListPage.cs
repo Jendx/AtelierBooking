@@ -1,6 +1,5 @@
 ﻿namespace AtelierBooking.Pages;
 
-using AtelierBooking.Helpers;
 using AtelierBooking.ViewModels;
 using CommunityToolkit.Maui.Markup;
 using Microsoft.Maui.Controls;

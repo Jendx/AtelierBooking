@@ -21,7 +21,7 @@ internal sealed class BookingListViewModel
     public async Task InitAsync(INavigation navigation)
     {
         BookTimes = new();
-        BookTimes.Add(new BookTime() { FirstName = "Pepa" });
+        BookTimes.Add(new BookTime() { FirstName = "Pepa", LastName = "Kokos", Contact = "792759877", BookedFrom = TimeOnly.MinValue, BookedTo = TimeOnly.MaxValue, Date = DateOnly.MaxValue });
         BookTimes.Add(new BookTime() { FirstName = "Evžen" });
 
         _navigation = navigation;
