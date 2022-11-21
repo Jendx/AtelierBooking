@@ -1,6 +1,7 @@
 ﻿namespace AtelierBooking.Helpers;
 
 using CommunityToolkit.Maui.Markup;
+using Microsoft.Maui.Controls.Shapes;
 
 internal static class Styled
 {
@@ -41,9 +42,10 @@ internal static class Styled
                 Color = Colors.DarkBlue,
             },
 
+            StrokeShape = new RoundRectangle(),
             StrokeThickness = 2,
 
             Content = view,
-        }.Margins(10);
+        }.Paddings(left: 10, right: 10, bottom: 10);
     }
 }

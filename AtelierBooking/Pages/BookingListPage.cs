@@ -29,7 +29,7 @@ internal sealed class BookingListPage : ContentPage
         return new CollectionView()
         {
             MinimumHeightRequest = 150,
-            ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical) { ItemSpacing = 16 },
+            ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical) { ItemSpacing = 8 },
             ItemTemplate = BookingListDataTemplate(),
             EmptyView = new Label().Text("Nič tu něje")
         }

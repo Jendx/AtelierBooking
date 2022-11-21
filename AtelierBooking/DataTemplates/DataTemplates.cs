@@ -70,7 +70,8 @@ internal static class DataTemplates
 
             }
         }
-        .Paddings(Styled.SmallPadding)
+        .Center()
+        .FillHorizontal()
         .SurroundWithBorder());
     }
 }
