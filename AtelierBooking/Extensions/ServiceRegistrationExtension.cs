@@ -1,4 +1,5 @@
-﻿using AtelierBooking.ViewModels;
+﻿using AtelierBooking.Http;
+using AtelierBooking.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace AtelierBooking.Extensions
 
             builder.Services
                 .AddSingleton<INavigation>((services) => App.Current.MainPage.Navigation)
+                .AddSingleton<ApiClient>()
                 .RegisterViewModels();
 
             return services;
