@@ -1,10 +1,8 @@
 ﻿namespace AtelierBooking.Models;
 
-internal sealed class BookTime
+internal sealed class ReservationListItem
 {
-    public string FirstName { get; set; }
-    
-    public string LastName { get; set; }
+    public string Name { get; set; }
     
     public DateOnly Date { get; set; }
     

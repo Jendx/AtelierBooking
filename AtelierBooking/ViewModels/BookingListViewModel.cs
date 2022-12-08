@@ -4,6 +4,7 @@ using AtelierBooking.Http;
 using AtelierBooking.Models;
 using AtelierBooking.Models.CommandParameters;
 using AtelierBooking.Pages.Popups;
+using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Maui.Views;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -23,15 +24,11 @@ internal sealed class BookingListViewModel
 
     public ICommand ApproveCommand { get; private set; }
 
-    public List<BookTime> BookTimes { get; private set; }
+    public ObservableCollection<ReservationListItem> Reservations { get; private set; }
 
     public async Task InitAsync(INavigation navigation)
     {
-        //BookTimes = new();
-        //BookTimes.Add(new BookTime() { FirstName = "Pepa", LastName = "Kokos", Contact = "792759877", BookedFrom = TimeOnly.MinValue, BookedTo = TimeOnly.MaxValue, Date = DateOnly.MaxValue });
-        //BookTimes.Add(new BookTime() { FirstName = "Evžen" });
-
-
+        await LoadData();
 
         _navigation = navigation;
         RejectCommand = new Command<ApproveRejectParameters>((parameters) =>
@@ -47,6 +44,7 @@ internal sealed class BookingListViewModel
 
     private async Task LoadData()
     {
-        BookTimes = await _apiClient.GetBookTimes();
+        Reservations = (await _apiClient.GetBookTimes())
+            .Select(r => r.ToReservatListItem()).ToObservableCollection();
     }
 }

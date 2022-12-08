@@ -33,7 +33,7 @@ internal sealed class BookingListPage : ContentPage
             ItemTemplate = BookingListDataTemplate(),
             EmptyView = new Label().Text("Nič tu něje")
         }
-        .Bind(CollectionView.ItemsSourceProperty, nameof(BookingListViewModel.BookTimes));
+        .Bind(CollectionView.ItemsSourceProperty, nameof(BookingListViewModel.Reservations));
     }
 
 }

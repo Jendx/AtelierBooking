@@ -24,29 +24,26 @@ internal static class DataTemplates
                 Styled.BoldLabel()
                 .Bind(
                     Label.TextProperty,
-                    binding1: new Binding(nameof(BookTime.FirstName)),
-                    binding2: new Binding(nameof(BookTime.LastName)),
-                    convert: ((string firstName, string lastName) values) => {
-                        return $"{values.firstName} {values.lastName}"; })
+                    nameof(ReservationListItem.Name))
                 .Row(0)
                 .Column(0),
 
                 Styled.BoldLabel()
-                .Bind(Label.TextProperty, nameof(BookTime.Date))
+                .Bind(Label.TextProperty, nameof(ReservationListItem.Date))
                 .Row(0)
                 .Column(1),
 
                 new Label()
                 .Bind(
                     Label.TextProperty,
-                    binding1: new Binding(nameof(BookTime.BookedFrom)),
-                    binding2: new Binding(nameof(BookTime.BookedTo)),
+                    binding1: new Binding(nameof(ReservationListItem.BookedFrom)),
+                    binding2: new Binding(nameof(ReservationListItem.BookedTo)),
                     convert: ((TimeOnly bookedFrom, TimeOnly bookedTo) values) => $"{values.bookedFrom} - {values.bookedTo}")
                 .Row(1)
                 .Column(1),
 
                 new Label()
-                .Bind(Label.TextProperty, nameof(BookTime.Contact))
+                .Bind(Label.TextProperty, nameof(ReservationListItem.Contact))
                 .Row(1)
                 .Column(0),
 
